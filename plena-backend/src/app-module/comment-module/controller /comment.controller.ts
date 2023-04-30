@@ -10,6 +10,7 @@ import {
   Query,
   UseInterceptors,
 } from "@nestjs/common";
+import { ClientProxy } from "@nestjs/microservices";
 import { AppInterceptor } from "src/app.interceptor";
 import { GetCurrentUser, Public } from "src/common/decorators";
 import { Utility } from "src/utils/utility";
@@ -25,13 +26,15 @@ export class CommentController {
     @Inject("winston")
     private readonly logger: Logger,
     private commentService: CommentService,
-    private utilityService: Utility
+    private utilityService: Utility,
+    @Inject("EVENT_SERVICE") private readonly client: ClientProxy
   ) {}
   @Post()
   public saveComment(
     @Body() body: CommentDto,
     @GetCurrentUser() user: any
   ): Promise<any> {
+    this.client.emit("SAVE_COMMENT", { postId: body.postId, count: 1 });
     return this.commentService.save(body, user);
   }
   @Get()
@@ -64,8 +67,13 @@ export class CommentController {
   @Delete("/:commentId")
   public async deleteComment(
     @Param("commentId") commentId: string,
+    @Query() queryParam: any,
     @GetCurrentUser() user: any
   ): Promise<any> {
+    this.client.emit("DELETE_COMMENT", {
+      postId: queryParam.postId,
+      count: -1,
+    });
     const data = await this.commentService.deleteByCommentId(commentId, user);
     return data;
   }

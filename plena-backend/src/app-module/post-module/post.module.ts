@@ -8,10 +8,24 @@ import { Utility } from "src/utils/utility";
 import { UserModule } from "../user-module/user.module";
 import { PostSchema } from "./entities/post.entity";
 import { PostController } from "./controller /post.controller";
+import { Transport, ClientsModule } from "@nestjs/microservices";
 @Module({
   imports: [
     JwtModule.register({ secret: env.jwt.accessKey }),
     MongooseModule.forFeature([{ name: "Post", schema: PostSchema }]),
+    ClientsModule.register([
+      {
+        name: "EVENT_SERVICE",
+        transport: Transport.RMQ,
+        options: {
+          urls: [env.rabbitMq.url],
+          queue: "ACTION_CONSUMER",
+          queueOptions: {
+            durable: false,
+          },
+        },
+      },
+    ]),
     UserModule,
   ],
   controllers: [PostController],

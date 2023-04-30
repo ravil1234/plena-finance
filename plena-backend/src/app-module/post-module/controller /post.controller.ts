@@ -11,13 +11,13 @@ import {
   Query,
   UseInterceptors,
 } from "@nestjs/common";
+import { ClientProxy } from "@nestjs/microservices";
 import { AppInterceptor } from "src/app.interceptor";
 import { GetCurrentUser, Public } from "src/common/decorators";
 import { Utility } from "src/utils/utility";
 import { Logger } from "winston";
 import { PostDto } from "../dto/post.dto";
 import { PostService } from "../services/post.service";
-
 @UseInterceptors(AppInterceptor)
 @Controller()
 export class PostController {
@@ -25,7 +25,8 @@ export class PostController {
     @Inject("winston")
     private readonly logger: Logger,
     private postService: PostService,
-    private utilityService: Utility
+    private utilityService: Utility,
+    @Inject("EVENT_SERVICE") private readonly client: ClientProxy
   ) {}
   @Post()
   public savePost(
@@ -35,6 +36,8 @@ export class PostController {
     const imageTypeArray = body.image.split(".");
     if (!["png", "jpeg", "jpg"].includes(imageTypeArray[1]))
       throw new BadRequestException("Invalid image format");
+    // send queue to update post tag
+    this.client.emit("POST_TAG", { tags: body.tags });
     return this.postService.save(body, user);
   }
   @Get()

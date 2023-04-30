@@ -71,4 +71,7 @@ export const env = {
     expirationTime: getOsEnv("JWT_EXPIRES_IN"),
     adminTokenSecret: getOsEnv("ADMIN_TOKEN_SECRET"),
   },
+  rabbitMq: {
+    url: getOsEnv("RABBIT_MQ_URL"),
+  },
 };

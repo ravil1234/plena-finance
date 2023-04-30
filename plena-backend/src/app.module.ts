@@ -12,24 +12,12 @@ import { mongoConfig } from "./database/typeorm.config";
 import { PostModule } from "./app-module/post-module/post.module";
 import { CommentModule } from "./app-module/comment-module/comment.module";
 import { env } from "./env";
+
 @Module({
   imports: [
     MongooseModule.forRoot(env.mongoDb.uri, {
       dbName: env.mongoDb.database,
     }),
-    ClientsModule.register([
-      {
-        name: 'MATH_SERVICE',
-        transport: Transport.RMQ,
-        options: {
-          urls: ['amqp://localhost:5672'],
-          queue: 'cats_queue',
-          queueOptions: {
-            durable: false
-          },
-        },
-      },
-    ])
     WinstonModule.forRoot(winstonOptions),
     RouterModule.register([
       {
