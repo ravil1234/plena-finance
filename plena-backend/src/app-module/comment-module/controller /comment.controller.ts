@@ -14,6 +14,7 @@ import { AppInterceptor } from "src/app.interceptor";
 import { GetCurrentUser, Public } from "src/common/decorators";
 import { Utility } from "src/utils/utility";
 import { Logger } from "winston";
+import { CommentDto } from "../dto/comment.dto";
 import { CommentService } from "../services/comment.service";
 
 @UseInterceptors(AppInterceptor)
@@ -28,7 +29,7 @@ export class CommentController {
   ) {}
   @Post()
   public saveComment(
-    @Body() body: any,
+    @Body() body: CommentDto,
     @GetCurrentUser() user: any
   ): Promise<any> {
     return this.commentService.save(body, user);
