@@ -1,4 +1,4 @@
-# WIN Interview
+# PLENA Backend Assignement
 
 ## Installation
 
