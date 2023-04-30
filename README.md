@@ -32,6 +32,39 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+### Module API's
+
+```bash
+Comment Module
+
+@Post('BASE_URL'): Save a New Comment
+@Get('BASE_URL'): Get all comments by pagination
+@Get('BASE_URL/:postId'): Get comments by postIds
+@Put('BASE_URL/:commentId'): Update a comment by ID
+@Delete('BASE_URL/:commentId'): Delete a comment by ID
+```
+
+```bash
+Post Module
+
+@Post('BASE_URL/'): Save a New Post
+@Get('BASE_URL/'): Get all posts by pagination
+@Get('BASE_URL/:postId'): Get a post by ID
+@Put('BASE_URL/:postId'): Update a post by ID
+@Delete('BASE_URL/:postId'): Delete a Post by ID
+```
+
+```bash
+User Module
+
+@Post('BASE_URL/signup'): Signup a new user and save them to database
+@Post('BASE_URL/login'): Checks if an existing user then login
+@Get('BASE_URL/'): Get all users by pagination
+@Put('BASE_URL/:userId'): Updates a user by Id
+@Delete('BASE_URL/:userId'): Deletes a user by Id
+
+```
+
 ## Technologies used
 
 ## Nest Js Framework
@@ -74,3 +107,7 @@ Mongoose is a Node. js-based Object Data Modeling (ODM) library for MongoDB.
 7. Global Error Handler Middleware
 8. Winston logger has been integrated for logging purpose.
 9. Clean code architecture.
+
+```
+
+```
