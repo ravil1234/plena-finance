@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -14,6 +15,7 @@ import { AppInterceptor } from "src/app.interceptor";
 import { GetCurrentUser, Public } from "src/common/decorators";
 import { Utility } from "src/utils/utility";
 import { Logger } from "winston";
+import { PostDto } from "../dto/post.dto";
 import { PostService } from "../services/post.service";
 
 @UseInterceptors(AppInterceptor)
@@ -27,9 +29,12 @@ export class PostController {
   ) {}
   @Post()
   public savePost(
-    @Body() body: any,
+    @Body() body: PostDto,
     @GetCurrentUser() user: any
   ): Promise<any> {
+    const imageTypeArray = body.image.split(".");
+    if (!["png", "jpeg", "jpg"].includes(imageTypeArray[1]))
+      throw new BadRequestException("Invalid image format");
     return this.postService.save(body, user);
   }
   @Get()
