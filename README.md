@@ -32,6 +32,60 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Technologies used
+
+## Nest Js Framework
+
+- A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
+- Gives you true flexibility by allowing use of any other libraries.
+- Provides Modular Architecture.
+- It is helpful in implelmenting design patterns in javascript easily.
+
+### Nodejs/Express
+
+- Node Js is a javascript runtime coupled with ExpressJs framework it allows and helps in creating higly scalable servers easily.
+
+### NestJS RabbitMQ Microservice
+
+Nest JS provides built-in support for the RBMQ messaging systems as transporters.
+
+We are going to develop two applications one is plena-backend(client) and plena-consumer (microservice) which will be implementing communication between them over RabbitMQ.
+
+### Authentication and Authorization
+
+- JWT is a common method for authentication.
+- Guards have been used to protect a route and only be accessible by an administrator.
+
+### Mongo DB
+
+- MongoDb is a NoSql database used to build highly available and scalable internet applications.
+- Schema Design is flexible
+
+### Mongoose Framework
+
+Mongoose is a Node. js-based Object Data Modeling (ODM) library for MongoDB.
+
+### TypeScript
+
+- Typescript is strongly typed programming language build over javascript.
+- It's used to provide typecheck and type errors.
+
+### Docker
+
+- Docker is used for deployment in production.
+
+## Key Points
+
+1. Design a modular based architecture.
+2. Provides CRUD operations of everytable design.
+3. Design a simple efficinet schema in mongoose
+4. Version Control of Api is handled properly
+5. Guards are used for authentication and authorization of API's.
+6. Common Response Interceptor
+7. Global Error Handler Middleware
+8. Winston logger has been integrated for logging purpose.
+9. Clean code architecture.
+
 ### Module API's
 
 ```bash
@@ -64,52 +118,3 @@ User Module
 @Delete('BASE_URL/:userId'): Deletes a user by Id
 
 ```
-
-## Technologies used
-
-## Nest Js Framework
-
-- A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
-- Gives you true flexibility by allowing use of any other libraries.
-- Provides Modular Architecture.
-- It is helpful in implelmenting design patterns in javascript easily.
-
-### Nodejs/Express
-
-- Node Js is a javascript runtime coupled with ExpressJs framework it allows and helps in creating higly scalable servers easily.
-
-### NestJS RabbitMQ Microservice
-
-Nest JS provides built-in support for the RBMQ messaging systems as transporters.
-
-We are going to develop two applications one is plena-backend(client) and plena-consumer (microservice) which will be implementing communication between them over RabbitMQ.
-
-### Mongo DB
-
-- MongoDb is a NoSql database used to build highly available and scalable internet applications.
-- Schema Design is flexible
-
-### Mongoose Framework
-
-Mongoose is a Node. js-based Object Data Modeling (ODM) library for MongoDB.
-
-### TypeScript
-
-- Typescript is strongly typed programming language build over javascript.
-- It's used to provide typecheck and type errors.
-
-### Docker
-
-- Docker is used for deployment in production.
-
-## Key Points
-
-1. Design a modular based architecture.
-2. Provides CRUD operations of everytable design.
-3. Design a simple efficinet schema in mongoose
-4. Version Control of Api is handled properly
-5. Guards are used for auhentication and authorization of API's.
-6. Common Response Interceptor
-7. Global Error Handler Middleware
-8. Winston logger has been integrated for logging purpose.
-9. Clean code architecture.
