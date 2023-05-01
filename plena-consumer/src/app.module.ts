@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { env } from "./env";
 import { CommentCountController } from "./module/comment/comment-count.controller";
 import { CommentCountSchema } from "./module/comment/comment-count.entity";
 import { CommentCountRepository } from "./module/comment/comment-count.repository";
@@ -11,7 +12,7 @@ import { PostTagRepository } from "./module/post/post-tag.repository";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(`${process.env.MONGO_URI}`),
+    MongooseModule.forRoot(`${env.mongoDb.uri}`),
     MongooseModule.forFeature([
       { name: "CommentCount", schema: CommentCountSchema },
       { name: "PostTag", schema: PostTagSchema },
