@@ -107,7 +107,3 @@ Mongoose is a Node. js-based Object Data Modeling (ODM) library for MongoDB.
 7. Global Error Handler Middleware
 8. Winston logger has been integrated for logging purpose.
 9. Clean code architecture.
-
-```
-
-```
