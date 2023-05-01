@@ -74,13 +74,13 @@ User Module
 - Provides Modular Architecture.
 - It is helpful in implelmenting design patterns in javascript easily.
 
-## NestJS RABBITMQ Microservice
-
-Nest JS provides built-in support for the RBMQ messaging systems as transporters.
-
 ### Nodejs/Express
 
 - Node Js is a javascript runtime coupled with ExpressJs framework it allows and helps in creating higly scalable servers easily.
+
+### NestJS RabbitMQ Microservice
+
+Nest JS provides built-in support for the RBMQ messaging systems as transporters.
 
 We are going to develop two applications one is plena-backend(client) and plena-consumer (microservice) which will be implementing communication between them over RabbitMQ.
 
