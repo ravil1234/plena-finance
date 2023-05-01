@@ -1,4 +1,4 @@
-# PLENA Backend Assignement
+# Plena Backend Assignement
 
 ## Installation
 
