@@ -1,10 +1,12 @@
 import { Controller } from "@nestjs/common";
 import { MessagePattern } from "@nestjs/microservices";
-import { PostService } from "./post-tag.repository";
+import { PostTagRepository } from "./post-tag.repository";
 
 @Controller()
 export class PostTagController {
-  constructor(private postService: PostService) {}
-  @MessagePattern("POST")
-  async postTag() {}
+  constructor(private postRepository: PostTagRepository) {}
+  @MessagePattern("POST_TAG")
+  public async postTag(data: any) {
+    return this.postRepository.updateTagCount(data.tag);
+  }
 }

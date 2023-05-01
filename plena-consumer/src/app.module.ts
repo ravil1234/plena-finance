@@ -2,10 +2,12 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { CommentCountController } from "./module/comment/comment-count.controller";
 import { CommentCountSchema } from "./module/comment/comment-count.entity";
-import { CommentController } from "./module/comment/consumer.controller";
+import { CommentCountRepository } from "./module/comment/comment-count.repository";
 import { PostTagController } from "./module/post/post-tag.controller";
 import { PostTagSchema } from "./module/post/post-tag.entity";
+import { PostTagRepository } from "./module/post/post-tag.repository";
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ import { PostTagSchema } from "./module/post/post-tag.entity";
       { name: "PostTag", schema: PostTagSchema },
     ]),
   ],
-  controllers: [AppController, PostTagController, CommentController],
-  providers: [AppService],
+  controllers: [AppController, PostTagController, CommentCountController],
+  providers: [AppService, PostTagRepository, CommentCountRepository],
 })
 export class AppModule {}
